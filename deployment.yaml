@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-app
+spec:
+  replicas: 2  # 실행할 Pod의 개수 (2개의 복제본을 실행)
+  selector:
+    matchLabels:
+      app: springboot-app  # 이 레이블을 가진 Pod를 선택
+  template:
+    metadata:
+      labels:
+        app: springboot-app  # Pod에 해당 레이블을 부여
+    spec:
+      containers:
+      - name: springboot-app
+        image: dnjsgh1204/springboot-app:latest  # Docker Hub에서 가져올 이미지
+        ports:
+        - containerPort: 8080  # 컨테이너에서 사용할 포트
