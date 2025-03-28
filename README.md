@@ -34,6 +34,7 @@ Kubernetes를 활용한 Spring Boot 애플리케이션 배포 및 비용 절감
 
 Gradle을 사용하여 JAR 파일을 생성
 
+<br>
 
 2. Docker 이미지 빌드 (Dockerfile 사용)
 
@@ -43,12 +44,18 @@ docker build -t wonho/springboot-app:latest .
 
 JAR 파일을 포함한 Spring Boot Docker 이미지 생성
 
+<br>
+
+
 3. Docker Hub 로그인
 
 ```
 docker login
 ```
 Docker Hub에 로그인하여 컨테이너 이미지를 업로드할 준비
+
+<br>
+
 
 4. Docker Hub에 이미지 푸시
 
@@ -58,12 +65,18 @@ docker push dnjsgh1204/springboot-app:latest
 
 빌드한 이미지를 Docker Hub에 업로드
 
+<br>
+
+
 6. Kubernetes Deployment 생성 (deployment.yaml 적용)
 
 ```
 kubectl apply -f deployment.yaml
 ```
 deployment.yaml을 적용하여 Spring Boot 애플리케이션을 Kubernetes에 배포
+
+<br>
+
 
 7. 서비스 노출 (Service 설정)
 
@@ -73,12 +86,18 @@ deployment.yaml을 적용하여 Spring Boot 애플리케이션을 Kubernetes에 
 kubectl apply -f service-loadbalance.yaml
 ```
 
+<br>
+
+
 - NodePort 방식 적용 (로컬 환경 또는 클러스터 내부에서 사용 가능)
 
 ```
 kubectl apply -f service-nodeport.yaml
 ```
 두 개의 서비스 설정 파일(service-loadbalance.yaml, service-nodeport.yaml)을 사용하여 외부에서 접근 가능하도록 설정
+
+<br>
+
 
 8.배포 확인 및 서비스 테스트
 
@@ -88,6 +107,9 @@ kubectl get svc
 curl 192.168.49.2:30001/fisa1  # NodePort를 통한 접근 테스트
 ```
 
+<br>
+
+
 9.  kubernetes에서 애플리케이션 배포
 
 - Deployment 생성: springboot-app을 실행하는 Kubernetes Deployment를 생성
@@ -96,12 +118,15 @@ curl 192.168.49.2:30001/fisa1  # NodePort를 통한 접근 테스트
 
 ---
 
+<br>
+
+
 ### 결과
 
 
 ![image](https://github.com/user-attachments/assets/b7f65b19-3314-4103-883b-e71c8e3d4d04)
 
-![image](https://github.com/user-attachments/assets/07aa9a56-bae3-4a42-a8ca-35b9db552804)
+![image](https://github.com/user-attachments/assets/7d18a7b7-5c08-4217-bdb3-2a775aa5ba8b)
 
 - Spring Boot 애플리케이션을 Kubernetes에 배포하고, NodePort와 LoadBalancer 서비스를 통해 외부 접근을 테스트하였습니다. 
 
